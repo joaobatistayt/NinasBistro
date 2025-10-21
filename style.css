@@ -1,0 +1,79 @@
+*{
+    margin: 0;
+}
+
+.fonteH1{
+    padding: 10px;
+    font-family: "League Spartan", sans-serif;
+    font-size: 45px;
+}
+
+header{
+    background-color: #D89DFF;
+    box-shadow: 0 0 18px rgba(0, 0, 0, 1.0);
+}
+
+header li{
+    display: flex;
+    margin-bottom: 15px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;;
+    font-size: 25px;
+    font-weight: 600;
+    flex-direction: row;
+    font-family: "League Spartan", sans-serif;
+}
+
+.blocoPrincipal{
+    padding-left: 50px;
+}
+
+main{
+    display: flex;
+    background-color: #E7DBEF;
+    flex-direction: row;
+}
+
+main img{
+    width: 536px;
+    height: 369px;
+    margin-top: 80px;
+    margin-left: 70px;
+}
+
+main h1{
+    padding-top: 80px;
+    font-size: 90px;
+    font-family: "League Spartan", sans-serif;
+}
+
+main p{
+    width: 500px;
+    font-family: "League Spartan", sans-serif;
+}
+
+main hr{
+    border: none;
+    background-color: #D89DFF;
+    height: 3px;
+    margin-bottom: 15px;
+}
+
+.botaoReserva{
+    margin-top: 30px;
+    margin-bottom: 60px;
+    font-size: 20px;
+    padding: 15px 45px 15px 45px;
+    background-color: #D89DFF;
+    border-radius: 20px;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+    border: none;
+    font-family: "League Spartan", sans-serif;
+}
