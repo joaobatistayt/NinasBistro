@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Ver Reservas</title>
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function() {
+            const reservas = JSON.parse(localStorage.getItem("reservas")) || [];
+            const container = document.getElementById("listaReservas");
+
+            if (reservas.length === 0) {
+                container.innerText = "Nenhuma reserva encontrada.";
+                return;
+            }
+
+            reservas.forEach((reserva, index) => {
+                const div = document.createElement("div");
+                div.innerHTML = `
+                    <p><strong>Reserva #${index + 1}</strong></p>
+                    <p><strong>Solicitante:</strong> ${reserva.solicitante}</p>
+                    <p><strong>CPF:</strong> ${reserva.cpf}</p>
+                    <p><strong>Data da Reserva:</strong> ${reserva.dataReserva}</p>
+                    <p><strong>Hora de Chegada:</strong> ${reserva.horaChegada}</p>
+                    <p><strong>Hora de Saída:</strong> ${reserva.horaSaida}</p>
+                    <p><strong>Total de Pessoas:</strong> ${reserva.totalDePessoas}</p>
+                    <p><strong>Contato:</strong> ${reserva.contato}</p>
+                    <p><strong>Taxa da Reserva:</strong> R$ ${reserva.taxaDaReserva.toFixed(2)}</p>
+                    <hr>
+                `;
+                container.appendChild(div);
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Reservas Registradas</h1>
+    <div id="listaReservas"></div>
+    <br>
+    <a href="index.html">Voltar para Reserva</a>
+
+</body>
+</html>
