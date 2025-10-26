@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservar Mesa</title>
+</head>
+<body>
+
+    <h1>Formulário de Reserva</h1>
+
+    <form id="formReserva">
+        <label>Nome do Solicitante:</label><br>
+        <input type="text" id="Solicitante" required><br><br>
+
+        <label>CPF:</label><br>
+        <input type="text" id="UserCPF" required><br><br>
+
+        <label>Data da Reserva:</label><br>
+        <input type="date" id="DataReserva" required><br><br>
+
+        <label>Hora de Chegada:</label><br>
+        <input type="time" id="HoraChegada" required><br><br>
+
+        <label>Hora de Saída:</label><br>
+        <input type="time" id="HoraSaida" required><br><br>
+
+        <label>Total de Pessoas:</label><br>
+        <input type="number" id="TotalPessoas" min="1" required><br><br>
+
+        <label>Contato:</label><br>
+        <input type="text" id="Contato" required><br><br>
+
+        <button type="submit">Reservar</button>
+    </form>
+
+    <script>
+        const TAXA = 100;
+        const MinimoParaTaxa = 10;
+        let totalVagas = 200;
+
+        let check = localStorage.getItem("TotalVagas");
+
+        if (check !== null)
+        {
+            totalVagas = JSON.parse(localStorage.getItem("TotalVagas"));
+        }
+
+        document.getElementById("formReserva").addEventListener("submit", function(event) {
+            event.preventDefault();
+            if (totalVagas >= parseInt(document.getElementById("TotalPessoas").value)){
+                const reserva = {
+                solicitante: document.getElementById("Solicitante").value,
+                cpf: document.getElementById("UserCPF").value,
+                dataReserva: document.getElementById("DataReserva").value,
+                horaChegada: document.getElementById("HoraChegada").value,
+                horaSaida: document.getElementById("HoraSaida").value,
+                totalDePessoas: parseInt(document.getElementById("TotalPessoas").value),
+                contato: document.getElementById("Contato").value,
+                taxaDaReserva: parseInt(document.getElementById("TotalPessoas").value / MinimoParaTaxa) * TAXA
+            };
+            let reservas = JSON.parse(localStorage.getItem("reservas")) || [];
+            reservas.push(reserva);
+            localStorage.setItem("reservas", JSON.stringify(reservas));
+            totalVagas -= parseInt(document.getElementById("TotalPessoas").value);
+            localStorage.setItem("TotalVagas", JSON.stringify(totalVagas));
+            this.reset();
+            }
+            else
+            alert("Vagas indisponiveis!!!");
+        });
+    </script>
+    <br>
+    <a href="ver_reservas.html">Ver Reservas</a>
+
+</body>
+</html>
