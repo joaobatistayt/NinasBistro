@@ -1,0 +1,146 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "League Spartan", sans-serif;
+    background-color: #F9F9F9;
+    color: #333;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 48px;
+    color: #4A2C89;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 28px;
+    color: #4A2C89;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.section {
+    margin: 30px 0;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+}
+
+form label {
+    font-size: 16px;
+    margin-bottom: 5px;
+    display: block;
+    color: #555;
+}
+
+form input, form select, form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+form button {
+    background-color: #D89DFF;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+form button:hover {
+    background-color: #4A2C89;
+}
+
+ul {
+    list-style: none;
+}
+
+ul li {
+    font-size: 18px;
+    padding: 10px;
+    background-color: #fff;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #555;
+}
+
+ul li span {
+    font-weight: bold;
+}
+
+ul li:hover {
+    background-color: #F3E6FF;
+}
+
+/* Estilo para campos de formulário */
+form input[type="text"],
+form input[type="number"],
+form select {
+    background-color: #F3F3F3;
+    border: 1px solid #ccc;
+}
+
+form input[type="text"]:focus,
+form input[type="number"]:focus,
+form select:focus {
+    border-color: #D89DFF;
+    outline: none;
+}
+
+/* Botão de Voltar */
+.botaoVoltar {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background-color: #D89DFF;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.botaoVoltar:hover {
+    background-color: #4A2C89;
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 36px;
+    }
+
+    form {
+        padding: 15px;
+    }
+
+    form button {
+        padding: 12px;
+    }
+
+    ul li {
+        font-size: 16px;
+    }
+}

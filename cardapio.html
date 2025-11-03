@@ -3,56 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <title>Cardápio Interativo com LocalStorage</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 30px;
-      background-color: #f4f4f4;
-    }
-    h1 {
-      text-align: center;
-    }
-    .section {
-      background: white;
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
-    }
-    ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    li {
-      padding: 5px 0;
-    }
-    label, select, input {
-      margin: 5px 0;
-      display: block;
-    }
-    input[type="text"], input[type="number"], select {
-      width: 100%;
-      padding: 8px;
-      margin-bottom: 10px;
-    }
-    button {
-      padding: 8px 16px;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #218838;
-    }
-  </style>
+  <link rel="stylesheet" href="cardapio.css">
 </head>
 <body>
 
+  <a href="index.html" class="botaoVoltar">Voltar</a>
+
   <h1>Cardápio Interativo</h1>
 
-  <!-- Formulário de Adição -->
   <div class="section">
     <h2>Adicionar Item ao Cardápio</h2>
     <form id="formulario">
@@ -74,7 +32,6 @@
     </form>
   </div>
 
-  <!-- Seções do Cardápio -->
   <div class="section">
     <h2>Entradas</h2>
     <ul id="entrada"></ul>
@@ -95,9 +52,7 @@
     <ul id="bebida"></ul>
   </div>
 
-  <!-- JavaScript -->
   <script>
-    // Objeto com os dados do cardápio
     let cardapio = {
       "entrada": [],
       "prato-principal": [],
@@ -105,7 +60,6 @@
       "bebida": []
     };
 
-    // Carrega do localStorage ao iniciar
     window.onload = function() {
       const dadosSalvos = localStorage.getItem("cardapio");
 
@@ -115,7 +69,6 @@
       }
     };
 
-    // Função para adicionar item e salvar no localStorage
     const form = document.getElementById('formulario');
     form.addEventListener('submit', function(event) {
       event.preventDefault();
@@ -129,24 +82,17 @@
         return;
       }
 
-      // Adiciona ao objeto
       cardapio[categoria].push({ nome, preco });
-
-      // Salva no localStorage
       localStorage.setItem("cardapio", JSON.stringify(cardapio));
-
-      // Atualiza a interface
       renderizarCardapio();
 
-      // Limpa o formulário
       form.reset();
     });
 
-    // Função para renderizar os itens na tela
     function renderizarCardapio() {
       for (const categoria in cardapio) {
         const ul = document.getElementById(categoria);
-        ul.innerHTML = ''; // Limpa a lista antes de renderizar
+        ul.innerHTML = '';
 
         cardapio[categoria].forEach(item => {
           const li = document.createElement('li');
