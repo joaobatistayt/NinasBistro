@@ -42,38 +42,53 @@
         const TAXA = 100;
         const MinimoParaTaxa = 10;
 
-        document.getElementById("formReserva").addEventListener("submit", function(event) {
-            event.preventDefault();
 
-            let totalVagas = JSON.parse(localStorage.getItem("TotalVagas")) || 200;
-
-            const totalPessoas = parseInt(document.getElementById("TotalPessoas").value);
-            
-            if (totalVagas >= totalPessoas) {
-                const reserva = {
-                    solicitante: document.getElementById("Solicitante").value,
-                    cpf: document.getElementById("UserCPF").value,
-                    dataReserva: document.getElementById("DataReserva").value,
-                    horaChegada: document.getElementById("HoraChegada").value,
-                    horaSaida: document.getElementById("HoraSaida").value,
-                    totalDePessoas: totalPessoas,
-                    contato: document.getElementById("Contato").value,
-                    taxaDaReserva: Math.floor(totalPessoas / MinimoParaTaxa) * TAXA
-                };
-
-                let reservas = JSON.parse(localStorage.getItem("reservas")) || [];
-                reservas.push(reserva);
-                localStorage.setItem("reservas", JSON.stringify(reservas));
-
-                totalVagas -= totalPessoas;
-                localStorage.setItem("TotalVagas", JSON.stringify(totalVagas));
+        function obterTotalVagas() {
+            const totalVagas = JSON.parse(localStorage.getItem("TotalVagas"));
+            return totalVagas ? totalVagas : 200; 
+        }
 
 
-                this.reset();
-            } else {
-                alert("Vagas indisponíveis!");
-            }
-        });
+        function atualizarTotalVagas(vagas) {
+            localStorage.setItem("TotalVagas", JSON.stringify(vagas));
+        }
+
+        function atualizarReservas() {
+            let totalVagas = obterTotalVagas();
+            document.getElementById("formReserva").addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                const totalPessoas = parseInt(document.getElementById("TotalPessoas").value);
+
+                if (totalVagas >= totalPessoas) {
+                    const reserva = {
+                        solicitante: document.getElementById("Solicitante").value,
+                        cpf: document.getElementById("UserCPF").value,
+                        dataReserva: document.getElementById("DataReserva").value,
+                        horaChegada: document.getElementById("HoraChegada").value,
+                        horaSaida: document.getElementById("HoraSaida").value,
+                        totalDePessoas: totalPessoas,
+                        contato: document.getElementById("Contato").value,
+                        taxaDaReserva: Math.floor(totalPessoas / MinimoParaTaxa) * TAXA
+                    };
+                    let reservas = JSON.parse(localStorage.getItem("reservas")) || [];
+                    reservas.push(reserva);
+                    localStorage.setItem("reservas", JSON.stringify(reservas));
+
+                    totalVagas -= totalPessoas;
+                    atualizarTotalVagas(totalVagas);
+
+                    this.reset();
+                } else {
+                    alert("Vagas indisponíveis!");
+                }
+            });
+        }
+
+        window.onload = function() {
+            atualizarReservas();
+        };
     </script>
+
 </body>
 </html>

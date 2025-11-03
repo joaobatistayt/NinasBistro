@@ -39,15 +39,12 @@
             const reservas = JSON.parse(localStorage.getItem("reservas")) || [];
             const reservaExcluida = reservas[index];
 
-            const totalVagas = JSON.parse(localStorage.getItem("TotalVagas")) || 200;
-            const vagasOcupadas = reservaExcluida.totalDePessoas;
-            
-            const vagasRestantes = totalVagas + vagasOcupadas;
-            localStorage.setItem("TotalVagas", JSON.stringify(vagasRestantes));
-
+            let totalVagas = JSON.parse(localStorage.getItem("TotalVagas")) || 200;
+            totalVagas += reservaExcluida.totalDePessoas;
+            localStorage.setItem("TotalVagas", JSON.stringify(totalVagas));
             reservas.splice(index, 1);
-            localStorage.setItem("reservas", JSON.stringify(reservas));
 
+            localStorage.setItem("reservas", JSON.stringify(reservas));
             location.reload();
         }
     </script>
