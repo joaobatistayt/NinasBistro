@@ -28,24 +28,32 @@
                     <p><strong>Total de Pessoas:</strong> ${reserva.totalDePessoas}</p>
                     <p><strong>Contato:</strong> ${reserva.contato}</p>
                     <p><strong>Taxa da Reserva:</strong> R$ ${reserva.taxaDaReserva.toFixed(2)}</p>
-                    <button onclick="excluirReserva(${index})">Excluir</button>
+                    <button class="btnExcluir" data-index="${index}">Excluir</button>
                     <hr>
                 `;
                 container.appendChild(div);
             });
+
+           
+            const btnExcluir = document.querySelectorAll('.btnExcluir');
+            btnExcluir.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const index = this.getAttribute("data-index");
+                    excluirReserva(index);
+                });
+            });
         });
 
         function excluirReserva(index) {
-            const reservas = JSON.parse(localStorage.getItem("reservas")) || [];
-            const reservaExcluida = reservas[index];
+            let reservas = JSON.parse(localStorage.getItem("reservas")) || [];
+            const reservaExcluida = reservas.splice(index, 1)[0]; // Remove a reserva
 
             let totalVagas = JSON.parse(localStorage.getItem("TotalVagas")) || 200;
-            totalVagas += reservaExcluida.totalDePessoas;
-            localStorage.setItem("TotalVagas", JSON.stringify(totalVagas));
-            reservas.splice(index, 1);
+            totalVagas += reservaExcluida.totalDePessoas;  // Adiciona ao total de vagas o número de pessoas da reserva excluída
 
             localStorage.setItem("reservas", JSON.stringify(reservas));
-            location.reload();
+            localStorage.setItem("TotalVagas", JSON.stringify(totalVagas));
+            window.location.reload();
         }
     </script>
 </head>
