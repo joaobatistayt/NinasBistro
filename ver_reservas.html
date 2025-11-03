@@ -2,7 +2,10 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ver Reservas</title>
+    <link href="https://fonts.googleapis.com/css2?family=League+Spartan:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="ver_reservas.css">
     <script defer>
         document.addEventListener("DOMContentLoaded", function() {
             const reservas = JSON.parse(localStorage.getItem("reservas")) || [];
@@ -33,10 +36,9 @@
     </script>
 </head>
 <body>
-    <h1>Reservas Registradas</h1>
+    <h1 class="fonteH1">Reservas Registradas</h1>
     <div id="listaReservas"></div>
     <br>
-    <a href="index.html">Voltar para Reserva</a>
-
+    <a href="index.html">Voltar para Página Inicial</a>
 </body>
 </html>

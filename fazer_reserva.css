@@ -1,0 +1,73 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "League Spartan", sans-serif;
+    background-color: #E7DBEF;
+    color: #333;
+}
+
+.fonteH1 {
+    padding: 10px;
+    font-size: 45px;
+    text-align: center;
+    font-family: "League Spartan", sans-serif;
+    color: #4A2C89;  /* Cor semelhante ao #D89DFF */
+}
+
+form {
+    max-width: 600px;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    font-size: 18px;
+    margin-bottom: 10px;
+    display: block;
+    color: #4A2C89;
+}
+
+form input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #D89DFF;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background-color: #D89DFF;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 20px;
+    cursor: pointer;
+    font-family: "League Spartan", sans-serif;
+}
+
+button:hover {
+    background-color: #A179DF;
+}
+
+a {
+    text-decoration: none;
+    color: #4A2C89;
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+a:hover {
+    text-decoration: underline;
+}

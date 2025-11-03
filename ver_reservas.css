@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "League Spartan", sans-serif;
+    background-color: #E7DBEF;
+    color: #333;
+}
+
+.fonteH1 {
+    padding: 10px;
+    font-size: 45px;
+    text-align: center;
+    font-family: "League Spartan", sans-serif;
+    color: #4A2C89;
+}
+
+#listaReservas {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+#listaReservas div {
+    padding: 15px;
+    border-bottom: 2px solid #D89DFF;
+}
+
+#listaReservas div:last-child {
+    border-bottom: none;
+}
+
+#listaReservas p {
+    margin: 10px 0;
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+#listaReservas strong {
+    color: #4A2C89;
+}
+
+a {
+    text-decoration: none;
+    color: #4A2C89;
+    display: block;
+    text-align: center;
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
