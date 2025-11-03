@@ -28,11 +28,28 @@
                     <p><strong>Total de Pessoas:</strong> ${reserva.totalDePessoas}</p>
                     <p><strong>Contato:</strong> ${reserva.contato}</p>
                     <p><strong>Taxa da Reserva:</strong> R$ ${reserva.taxaDaReserva.toFixed(2)}</p>
+                    <button onclick="excluirReserva(${index})">Excluir</button>
                     <hr>
                 `;
                 container.appendChild(div);
             });
         });
+
+        function excluirReserva(index) {
+            const reservas = JSON.parse(localStorage.getItem("reservas")) || [];
+            const reservaExcluida = reservas[index];
+
+            const totalVagas = JSON.parse(localStorage.getItem("TotalVagas")) || 200;
+            const vagasOcupadas = reservaExcluida.totalDePessoas;
+            
+            const vagasRestantes = totalVagas + vagasOcupadas;
+            localStorage.setItem("TotalVagas", JSON.stringify(vagasRestantes));
+
+            reservas.splice(index, 1);
+            localStorage.setItem("reservas", JSON.stringify(reservas));
+
+            location.reload();
+        }
     </script>
 </head>
 <body>

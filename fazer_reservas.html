@@ -41,36 +41,37 @@
     <script>
         const TAXA = 100;
         const MinimoParaTaxa = 10;
-        let totalVagas = 200;
-
-        let check = localStorage.getItem("TotalVagas");
-
-        if (check !== null) {
-            totalVagas = JSON.parse(localStorage.getItem("TotalVagas"));
-        }
 
         document.getElementById("formReserva").addEventListener("submit", function(event) {
             event.preventDefault();
-            if (totalVagas >= parseInt(document.getElementById("TotalPessoas").value)) {
+
+            let totalVagas = JSON.parse(localStorage.getItem("TotalVagas")) || 200;
+
+            const totalPessoas = parseInt(document.getElementById("TotalPessoas").value);
+            
+            if (totalVagas >= totalPessoas) {
                 const reserva = {
                     solicitante: document.getElementById("Solicitante").value,
                     cpf: document.getElementById("UserCPF").value,
                     dataReserva: document.getElementById("DataReserva").value,
                     horaChegada: document.getElementById("HoraChegada").value,
                     horaSaida: document.getElementById("HoraSaida").value,
-                    totalDePessoas: parseInt(document.getElementById("TotalPessoas").value),
+                    totalDePessoas: totalPessoas,
                     contato: document.getElementById("Contato").value,
-                    taxaDaReserva: parseInt(document.getElementById("TotalPessoas").value / MinimoParaTaxa) * TAXA
+                    taxaDaReserva: Math.floor(totalPessoas / MinimoParaTaxa) * TAXA
                 };
 
                 let reservas = JSON.parse(localStorage.getItem("reservas")) || [];
                 reservas.push(reserva);
                 localStorage.setItem("reservas", JSON.stringify(reservas));
-                totalVagas -= parseInt(document.getElementById("TotalPessoas").value);
+
+                totalVagas -= totalPessoas;
                 localStorage.setItem("TotalVagas", JSON.stringify(totalVagas));
+
+
                 this.reset();
             } else {
-                alert("Vagas indisponíveis!!!");
+                alert("Vagas indisponíveis!");
             }
         });
     </script>
